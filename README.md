@@ -43,7 +43,7 @@ show "Payment received"                 → order marked paid (same path as Tyro
 ```bash
 pip install -r server/requirements.txt
 cp .env.example .env            # set SOLANA_MERCHANT_WALLET to a devnet wallet pubkey
-export $(grep -v '^#' .env | xargs)
+set -a; source .env; set +a
 python3 server/dev_server.py
 ```
 
@@ -78,6 +78,7 @@ Replace the in-memory `_intents` dict with a column on `orders`
 - [x] Transfer-request URL + QR
 - [x] On-chain verification via JSON-RPC (mint, recipient, amount, tx success)
 - [x] Paid hook into existing order flow
+- [x] First end-to-end devnet payment: [5sKonK2B…](https://explorer.solana.com/tx/5sKonK2B17uV3coCFr4STd2QoikvU5cRPoSdj7ebZTQg6bA2c7rkaZYwiE9bHxP8kXoqAqVLCDNiAt32yQWx1h5i?cluster=devnet)
 - [ ] Persist intents on the orders table
 - [ ] Live AUD→USDC rate
 - [ ] Mainnet config + dedicated RPC
